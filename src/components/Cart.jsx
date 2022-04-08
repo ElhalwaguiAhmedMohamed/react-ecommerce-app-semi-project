@@ -6,22 +6,23 @@ function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
+    console.log("useEffect");
     getCartProducts();
-    getTotalPrice();
   }, []);
 
   async function getCartProducts() {
     const fetchedProducts = await axios.get(URL);
     setCartProducts(fetchedProducts.data);
+    getTotalPrice(fetchedProducts.data);
   }
 
-  const getTotalPrice = async () => {
-    const tPrice = 0;
-    await cartProducts.forEach((product) => {
+  async function getTotalPrice(products) {
+    let tPrice = 0;
+    products.forEach((product) => {
       tPrice += product.price;
     });
     setTotalPrice(tPrice);
-  };
+  }
 
   const deleteCartProduct = async (id) => {
     await axios.delete(URL + "/" + id);
@@ -79,25 +80,27 @@ function Cart() {
         </tbody>
       </table>
       <div className="container">
-        <div className="col-md-12 text-center">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Order</div>
-            <div class="card-body">
-              <h5 class="card-title">
-                Number of items : {cartProducts.length}
-              </h5>
-              <h5>Total price : {totalPrice}</h5>
-              <p class="card-text">
-                The order will arrive with in 3 working days
-              </p>
-              <input
-                type={"button"}
-                value="Check out"
-                className="btn btn-success"
-                onClick={() => {
-                  toast("Your order is on it's way!");
-                }}
-              />
+        <div className="row">
+          <div className="col-12 text-center d-flex flex-center">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">Order</div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  Number of items : {cartProducts.length}
+                </h5>
+                <h5>Total price : {totalPrice}</h5>
+                <p class="card-text">
+                  The order will arrive with in 3 working days
+                </p>
+                <input
+                  type={"button"}
+                  value="Check out"
+                  className="btn btn-success"
+                  onClick={() => {
+                    toast("Your order is on it's way!");
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

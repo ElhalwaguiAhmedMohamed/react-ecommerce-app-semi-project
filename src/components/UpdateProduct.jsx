@@ -1,7 +1,7 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 function UpdateProduct() {
-  const [re, toBeUpdatedProduct] = useOutletContext();
+  const [, toBeUpdatedProduct] = useOutletContext();
   console.log(toBeUpdatedProduct);
   const [product, setProduct] = useState(toBeUpdatedProduct);
   return (

@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
-const axios = require("axios");
 
 ReactDOM.render(
   <React.StrictMode>
