@@ -3,7 +3,10 @@
 - A semi-project to test my react knowledge and implement some new features
 - used react / react-router / bootstrap / react-toastify / fortawesome
 
-## Available Scripts
+## Setup the app with scripts
+
+- First run the json server using [json-server --watch server/db.json] or use the [npm run server] script
+- use [npm start] to build the react project
 
 In the project directory, you can run:
 
